@@ -1,3 +1,3 @@
-- 👋 Hi, I’m UnkoR00T#2778
+- 👋 Hi, I’m UnkoR00T#2137
 
-I'm WebDev
+I'm learning vue
