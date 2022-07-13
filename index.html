@@ -32,7 +32,8 @@
 
         display: inline;
         font-size: 50px;
-
+        position: absolute;
+        bottom: 90%;
     }
 
     body {
@@ -62,106 +63,93 @@
 	}
 }
 
-.button-77 {
-  align-items: center;
-  appearance: none;
-  background-clip: padding-box;
-  background-color: initial;
-  background-image: none;
-  border-style: none;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  flex-direction: row;
-  flex-shrink: 0;
-  font-family: Eina01,sans-serif;
-  font-size: 16px;
-  font-weight: 800;
-  justify-content: center;
-  line-height: 24px;
-  margin: 0;
-  min-height: 64px;
-  outline: none;
-  overflow: visible;
-  padding: 19px 26px;
-  pointer-events: auto;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  text-transform: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  width: auto;
-  word-break: keep-all;
-  z-index: 0;
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=greek-ext');
+
+body{
+	
+	min-height:100vh;
+	font-family: 'Noto Sans', sans-serif;
+}
+.text-center{
+	color:#fff;	
+	text-transform:uppercase;
+    font-size: 23px;
+    margin: -50px 0 80px 0;
+    display: block;
+    text-align: center;
+}
+.box{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+    background-color: rgba(0, 0, 0, 0.89);
+	border-radius:3px;
+	padding:70px 100px;
+}
+.input-container{
+	position:relative;
+	margin-bottom:25px;
+}
+.input-container label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:16px;
+	color:#fff;	
+    pointer-event:none;
+	transition: all 0.5s ease-in-out;
+}
+.input-container input{ 
+  border:0;
+  border-bottom:1px solid #555;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+}
+.input-container input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid #e74c3c;	
+}
+.btn{
+	color:#fff;
+	background-color:#e74c3c;
+	outline: none;
+    border: 0;
+    color: #fff;
+	padding:10px 20px;
+	text-transform:uppercase;
+	margin-top:50px;
+	border-radius:2px;
+	cursor:pointer;
+	position:relative;
+}
+/*.btn:after{
+	content:"";
+	position:absolute;
+	background:rgba(0,0,0,0.50);
+	top:0;
+	right:0;
+	width:100%;
+	height:100%;
+}*/
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+	
 }
 
-@media (min-width: 768px) {
-  .button-77 {
-    padding: 19px 32px;
-  }
+#color{
+	
+	color: white;
+	
 }
 
-.button-77:before,
-.button-77:after {
-  border-radius: 80px;
-}
 
-.button-77:before {
-  background-color: rgba(249, 58, 19, .32);
-  content: "";
-  display: block;
-  height: 75%;
-  left: 0;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -2;
-}
-
-.button-77:after {
-  background-color: initial;
-  background-image: linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
-  bottom: 4px;
-  content: "";
-  display: block;
-  left: 4px;
-  overflow: hidden;
-  position: absolute;
-  right: 4px;
-  top: 4px;
-  transition: all 100ms ease-out;
-  z-index: -1;
-}
-
-.button-77:hover:not(:disabled):after {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  transition-timing-function: ease-in;
-}
-
-.button-77:active:not(:disabled) {
-  color: #ccc;
-}
-
-.button-77:active:not(:disabled):after {
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
-  bottom: 4px;
-  left: 4px;
-  right: 4px;
-  top: 4px;
-}
-
-.button-77:disabled {
-  cursor: default;
-  opacity: .24;
-}
   </style>
 
   
@@ -171,8 +159,11 @@
     createApp({
       data() {
         return {
-          serverName: 'Example Server!',
-          show: false
+          serverName: 'Projekt',
+          show: false,
+          inputName: null,
+          inputPass: null
+
         }
       },
       methods: {
@@ -185,15 +176,38 @@
                 this.show = true
             }
 
-        }
+
+        },
+        check() {
+
+        cos: 'aaaa'
+        console.debug(': ', this.cos)
+
+}
 
       }
     }).mount('#app')
   </script>
 
-  <div id="app"> <h1 class="h1">{{ serverName }}</h1> <br> <br><br>
-    <button class="button-77" role="button" @click="addone"> {{show ? 'Ukryj' : 'Pokarz'}} </button> <br> <br><br><br>
-    <span> {{ show ? 'Serwer tworzony z pasją! aaa' : ' ' }} </span> <br>
+  <div id="app">
+    <div class="box">
+        <form>
+            <span class="text-center">login</span>
+        <div class="input-container">
+            <input id="nick" type="text" required="" v-model="inputName"/>
+            <label>Nick BP</label>		
+        </div>
+        <div class="input-container">		
+            <input id="pass" type="mail" required="" v-model="inputPass"/>
+            <label>Hasło</label>
+        </div>
+            <br>
+            <div class="text-center"><button type="button" class="btn" v-on:click="check()">submit</button></div>
+    </form>	
+        
+        
+        <span id="color">Copyright by {{ serverName }}</span> 
+    </div>
     
 </div>
 
@@ -203,5 +217,4 @@
 
 	</div>
 </div>
-
 
