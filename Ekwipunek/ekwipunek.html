@@ -1,0 +1,252 @@
+<script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+  
+  
+  <style>
+
+body {
+            width: 100%;
+            height: 100%;
+            overflow:hidden;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .b
+        {
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 30px;
+            height: 700px;
+            width: 900px;
+            background-color: #fff;
+            border-color: black;
+            align-items: center;
+            ;
+            
+        }
+
+        #a{
+
+          color: black;
+          text-decoration: none;
+          border-right: black;
+          border-left: black;
+          
+
+}
+
+#a:hover{
+
+  color: black;
+  text-decoration: none;
+}
+
+#a:visited{
+
+  color: black;
+  text-decoration: black;
+}
+
+  </style>
+
+  
+  <script type="module">
+    import { createApp } from 'vue'
+  
+    createApp({
+      data() {
+        return {
+          
+          showEkwipunek: true,
+          showBalans: false,
+          showInternet: false,
+          showPodania: false,
+          showPoradnik: false,
+          bgEkwipunek: 'gray',
+          bgBalans: 'lightgray',
+          bgInternet: 'lightgray',
+          bgPodania: 'lightgray',
+          bgPoradnik: 'lightgray',
+          show: 'block'
+
+
+        }
+      },  computed: {
+        styleEkwipunek: function () {
+          return this.bgEkwipunek;
+        },
+        styleBalans: function () {
+          return this.bgBalans;
+        },
+        styleInternet: function () {
+          return this.bgInternet;
+        },
+        stylePodania: function () {
+          return this.bgPodania;
+        },
+        stylePoradnik: function () {
+          return this.bgPoradnik;
+        },
+        show: function () {
+          return this.show;
+        }
+      },
+      methods: {
+
+        actual: function (clicked){
+
+          if( clicked == 'ekwipunek'){
+
+            this.showEkwipunek = true;
+            this.showBalans = false;
+            this.showInternet = false;
+            this.showPodania = false;
+            this.showPoradnik = false;
+
+            this.bgEkwipunek = 'gray';
+            this.bgBalans = 'lightgray';
+            this.bgInternet = 'lightgray';
+            this.bgPodania = 'lightgray';
+            this.bgPoradnik = 'lightgray';
+
+          }else if(clicked == 'balans'){
+
+            this.showEkwipunek = false;
+            this.showBalans = true;
+            this.showInternet = false;
+            this.showPodania = false;
+            this.showPoradnik = false;
+
+            this.bgEkwipunek = 'lightgray';
+            this.bgBalans = 'gray';
+            this.bgInternet = 'lightgray';
+            this.bgPodania = 'lightgray';
+            this.bgPoradnik = 'lightgray';
+
+          }else if(clicked == 'internet'){
+
+this.showEkwipunek = false;
+this.showBalans = false;
+this.showInternet = true;
+this.showPodania = false;
+this.showPoradnik = false;
+
+this.bgEkwipunek = 'lightgray';
+this.bgBalans = 'lightgray';
+this.bgInternet = 'gray';
+this.bgPodania = 'lightgray';
+this.bgPoradnik = 'lightgray';
+
+}else if(clicked == 'podania'){
+
+this.showEkwipunek = false;
+this.showBalans = false;
+this.showInternet = false;
+this.showPodania = true;
+this.showPoradnik = false;
+
+this.bgEkwipunek = 'lightgray';
+this.bgBalans = 'lightgray';
+this.bgInternet = 'lightgray';
+this.bgPodania = 'gray';
+this.bgPoradnik = 'lightgray';
+
+}else if(clicked == 'poradnik'){
+
+this.showEkwipunek = false;
+this.showBalans = false;
+this.showInternet = false;
+this.showPodania = false;
+this.showPoradnik = true;
+
+this.bgEkwipunek = 'lightgray';
+this.bgBalans = 'lightgray';
+this.bgInternet = 'lightgray';
+this.bgPodania = 'lightgray';
+this.bgPoradnik = 'gray';
+
+}else{
+
+  alert('Blad! Nic się nie wykonało!')
+
+}
+
+        }, close: function (event){
+
+          if(this.show == 'block'){
+
+            this.show = 'none';
+
+          }else{
+
+            this.show = 'block';
+
+          }
+
+
+        }
+        
+
+      }
+
+
+    }).mount('#app')
+  </script>
+
+<div id="app" v-bind:style="{ 'display' : show }">
+
+  <canvas id="mainCanvas"></canvas>
+  
+    <div class="b" id="d" v-bind:style="{ 'display' : show }" style=" background-color: gray; border-color: black;">
+        
+        <div class="top" style="width: 100%; background-color: lightgray; height: 60px; ">
+          <button id="del" @click="close()"style="float: right; position: absolute;">X</button>
+          <span v-bind:style="{ 'background-color': styleEkwipunek }" ref="ekwipunek" href="ekwipunek.html" style="float: left; height: 60px; width: 180px; border-top-left-radius: 24px; border-top-right-radius: 24px;" id="a" v-on:click = "actual('ekwipunek')">
+
+            <h2 style=" text-align: center; ">Ekwipunek</h2> 
+
+          </span>
+        
+          <span v-bind:style="{ 'background-color': styleBalans }" ref="balans" href="balans.html" style="float: left; height: 60px; width: 180px; border-top-left-radius: 24px; border-top-right-radius: 24px;"  id="a" v-on:click = "actual('balans')">
+
+            <h2 style=" text-align: center; ">Balans</h2> 
+
+          </span>
+          <span v-bind:style="{ 'background-color': styleInternet }" ref="internet" href="internet.html" style="float: left; height: 60px; width: 180px; border-top-left-radius: 24px; border-top-right-radius: 24px;"  id="a" v-on:click = "actual('internet')">
+
+            <h2 style=" text-align: center; ">Internet</h2> 
+
+          </span>
+          <span v-bind:style="{ 'background-color': stylePodania }" ref="ekwipunek" href="podania.html" style="float: left; height: 60px; width: 180px; border-top-left-radius: 24px; border-top-right-radius: 24px;"  id="a" v-on:click = "actual('podania')">
+
+            <h2 style=" text-align: center; ">Podania</h2> 
+
+          </span>
+          <span v-bind:style="{ 'background-color': stylePoradnik }" ref="ekwipunek" href="poradnik.html" style="float: left; height: 60px; width: 180px; border-top-left-radius: 24px; border-top-right-radius: 24px;"  id="a" v-on:click = "actual('poradnik')">
+
+            <h2 style=" text-align: center; ">Poradnik</h2> 
+
+          </span>
+
+          
+
+        </div>
+        
+        <div class="content" style="float: center; text-align: center;">
+
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
